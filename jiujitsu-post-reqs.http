@@ -1,0 +1,40 @@
+@baseUrl = http://localhost:5000
+
+# @name getAllPosts
+GET  {{baseUrl}}/posts HTTP/1.1
+Content-Type: application/json
+###
+
+# @name getPostById
+GET  {{baseUrl}}/posts/2 HTTP/1.1
+Content-Type: application/json
+###
+
+# @name createPost
+POST  {{baseUrl}}/post HTTP/1.1
+Content-Type: application/json
+
+{
+    "Title": "Sobre força", 
+    "Body": "Força é ruim pra quem tem pouca", 
+    "Belt": "Black", 
+    "Author": "Carlinhos Galo"
+}
+###
+
+# @name updatePost
+PUT  {{baseUrl}}/post/2 HTTP/1.1
+Content-Type: application/json
+
+{
+    "Title": "Cambalhotas e berimbolo!", 
+    "Body": "Sabe o que você faz com essa cambalhota ai? Enfia no...", 
+    "Belt": "Black", 
+    "Author": "Renzo Gracie"
+}
+###
+
+# @name deletePost
+DELETE   {{baseUrl}}/post/4 HTTP/1.1
+Content-Type: application/json
+###
