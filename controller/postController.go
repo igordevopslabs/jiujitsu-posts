@@ -3,10 +3,21 @@ package controller
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/igordevopslabs/jiujitsu-posts/config"
-	"github.com/igordevopslabs/jiujitsu-posts/models"
+	models "github.com/igordevopslabs/jiujitsu-posts/models"
 	"go.uber.org/zap"
 )
 
+// @BasePath /post
+
+// @Summary     Create post
+// @Description Create a new post in API
+// @ID          create-post
+// @Tags  	    posts
+// @Accept      json
+// @Produce     json
+// @Param       post body models.Post true "Post create"
+// @Success     200 {object} models.Post
+// @Router      /post [post]
 func CreatePost(c *gin.Context) {
 
 	config.LogInfo("Init journey to create a new post", zap.String("journey", "createPost"))
@@ -32,6 +43,16 @@ func CreatePost(c *gin.Context) {
 	config.LogInfo("new post created", zap.String("journey", "createPost"))
 }
 
+// @BasePath /posts
+
+// @Summary     Get all posts
+// @Description Get all existent posts in  API
+// @ID          get-all-post
+// @Tags  	    posts
+// @Accept      json
+// @Produce     json
+// @Success     200 {object} models.Post
+// @Router      /posts [get]
 func GetAllPosts(c *gin.Context) {
 	config.LogInfo("Init journey to get all post", zap.String("journey", "getAllPosts"))
 
@@ -52,6 +73,17 @@ func GetAllPosts(c *gin.Context) {
 
 }
 
+// @BasePath /posts/:id
+
+// @Summary     Get all posts by ID
+// @Description Get existent post in  API by ID
+// @ID          get-post-id
+// @Tags  	    posts
+// @Param       id path string true "Post ID"
+// @Accept      json
+// @Produce     json
+// @Success     200 {object} models.Post
+// @Router      /posts/{id} [get]
 func GetPostByID(c *gin.Context) {
 	config.LogInfo("Init journey to get single post", zap.String("journey", "getPostByID"))
 
@@ -73,6 +105,18 @@ func GetPostByID(c *gin.Context) {
 
 }
 
+// @BasePath /post/:id
+
+// @Summary     Update post
+// @Description Update existent post in  API by ID
+// @ID          update-post
+// @Tags  	    posts
+// @Param       id path string true "Post ID"
+// @Param       post body models.Post true "Post to Update"
+// @Accept      json
+// @Produce     json
+// @Success     200 {object} models.Post
+// @Router      /post/{id} [put]
 func UpdatePost(c *gin.Context) {
 
 	config.LogInfo("Init journey to update a post", zap.String("journey", "updatePost"))
@@ -107,6 +151,17 @@ func UpdatePost(c *gin.Context) {
 	config.LogInfo("post updated", zap.String("journey", "updatePost"))
 }
 
+// @BasePath /post/:id
+
+// @Summary     Delete post by ID
+// @Description Delete a existent post in  API by ID
+// @ID          delete-post-id
+// @Tags  	    posts
+// @Param       id path string true "Post ID"
+// @Accept      json
+// @Produce     json
+// @Success     200 {object} models.Post
+// @Router      /post/{id} [delete]
 func DeletePost(c *gin.Context) {
 	config.LogInfo("Init journey to delete single post", zap.String("journey", "deletePost"))
 

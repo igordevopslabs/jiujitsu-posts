@@ -15,10 +15,10 @@ POST  {{baseUrl}}/post HTTP/1.1
 Content-Type: application/json
 
 {
-    "Title": "Sobre força", 
-    "Body": "Força é ruim pra quem tem pouca", 
+    "Title": "Treinar...", 
+    "Body": "Treinar seus p0rr4...", 
     "Belt": "Black", 
-    "Author": "Carlinhos Galo"
+    "Author": "Julio Pinheiro"
 }
 ###
 
@@ -35,6 +35,6 @@ Content-Type: application/json
 ###
 
 # @name deletePost
-DELETE   {{baseUrl}}/post/4 HTTP/1.1
+DELETE   {{baseUrl}}/post/5 HTTP/1.1
 Content-Type: application/json
 ###

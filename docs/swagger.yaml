@@ -1,0 +1,123 @@
+basePath: /
+definitions:
+  models.Post:
+    type: object
+host: localhost:5000
+info:
+  contact: {}
+  description: API simples para retornar os maiores jargões do jiu-jitsu através de
+    posts objetivos.
+  title: API Jiu-Jitsu Posts
+  version: "1.0"
+paths:
+  /post:
+    post:
+      consumes:
+      - application/json
+      description: Create a new post in API
+      operationId: create-post
+      parameters:
+      - description: Post create
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/models.Post'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Post'
+      summary: Create post
+      tags:
+      - posts
+  /post/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a existent post in  API by ID
+      operationId: delete-post-id
+      parameters:
+      - description: Post ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Post'
+      summary: Delete post by ID
+      tags:
+      - posts
+    put:
+      consumes:
+      - application/json
+      description: Update existent post in  API by ID
+      operationId: update-post
+      parameters:
+      - description: Post ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Post to Update
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/models.Post'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Post'
+      summary: Update post
+      tags:
+      - posts
+  /posts:
+    get:
+      consumes:
+      - application/json
+      description: Get all existent posts in  API
+      operationId: get-all-post
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Post'
+      summary: Get all posts
+      tags:
+      - posts
+  /posts/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get existent post in  API by ID
+      operationId: get-post-id
+      parameters:
+      - description: Post ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Post'
+      summary: Get all posts by ID
+      tags:
+      - posts
+swagger: "2.0"
