@@ -2,6 +2,8 @@ basePath: /
 definitions:
   models.Post:
     type: object
+  models.User:
+    type: object
 host: localhost:5000
 info:
   contact: {}
@@ -10,6 +12,29 @@ info:
   title: API Jiu-Jitsu Posts
   version: "1.0"
 paths:
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: Login a user to consume API
+      operationId: login-user
+      parameters:
+      - description: User log\in
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Login user
+      tags:
+      - users
   /post:
     post:
       consumes:
@@ -23,6 +48,11 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/models.Post'
+      - description: Authorization header
+        in: header
+        name: Authorization
+        required: true
+        type: string
       produces:
       - application/json
       responses:
@@ -30,6 +60,8 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/models.Post'
+      security:
+      - BearerAuth: []
       summary: Create post
       tags:
       - posts
@@ -45,6 +77,11 @@ paths:
         name: id
         required: true
         type: string
+      - description: Authorization header
+        in: header
+        name: Authorization
+        required: true
+        type: string
       produces:
       - application/json
       responses:
@@ -52,6 +89,8 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/models.Post'
+      security:
+      - BearerAuth: []
       summary: Delete post by ID
       tags:
       - posts
@@ -72,6 +111,11 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/models.Post'
+      - description: Authorization header
+        in: header
+        name: Authorization
+        required: true
+        type: string
       produces:
       - application/json
       responses:
@@ -79,6 +123,8 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/models.Post'
+      security:
+      - BearerAuth: []
       summary: Update post
       tags:
       - posts
@@ -120,4 +166,27 @@ paths:
       summary: Get all posts by ID
       tags:
       - posts
+  /singup:
+    post:
+      consumes:
+      - application/json
+      description: Create a new user to consume API
+      operationId: create-user
+      parameters:
+      - description: User create
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Create user
+      tags:
+      - users
 swagger: "2.0"

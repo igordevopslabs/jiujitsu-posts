@@ -15,8 +15,48 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/login": {
+            "post": {
+                "description": "Login a user to consume API",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "users"
+                ],
+                "summary": "Login user",
+                "operationId": "login-user",
+                "parameters": [
+                    {
+                        "description": "User log\\in",
+                        "name": "post",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                }
+            }
+        },
         "/post": {
             "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Create a new post in API",
                 "consumes": [
                     "application/json"
@@ -38,6 +78,13 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/models.Post"
                         }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Authorization header",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -52,6 +99,11 @@ const docTemplate = `{
         },
         "/post/{id}": {
             "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Update existent post in  API by ID",
                 "consumes": [
                     "application/json"
@@ -80,6 +132,13 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/models.Post"
                         }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Authorization header",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -92,6 +151,11 @@ const docTemplate = `{
                 }
             },
             "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "description": "Delete a existent post in  API by ID",
                 "consumes": [
                     "application/json"
@@ -110,6 +174,13 @@ const docTemplate = `{
                         "description": "Post ID",
                         "name": "id",
                         "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Authorization header",
+                        "name": "Authorization",
+                        "in": "header",
                         "required": true
                     }
                 ],
@@ -179,10 +250,48 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/singup": {
+            "post": {
+                "description": "Create a new user to consume API",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "users"
+                ],
+                "summary": "Create user",
+                "operationId": "create-user",
+                "parameters": [
+                    {
+                        "description": "User create",
+                        "name": "post",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
         "models.Post": {
+            "type": "object"
+        },
+        "models.User": {
             "type": "object"
         }
     }

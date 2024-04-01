@@ -1,5 +1,15 @@
 @baseUrl = http://localhost:5000
 
+# @name getProbeHealth
+GET  {{baseUrl}}/healthy HTTP/1.1
+Content-Type: application/json
+###
+
+# @name getProbeReady
+GET  {{baseUrl}}/ready HTTP/1.1
+Content-Type: application/json
+###
+
 # @name getAllPosts
 GET  {{baseUrl}}/posts HTTP/1.1
 Content-Type: application/json
@@ -13,18 +23,20 @@ Content-Type: application/json
 # @name createPost
 POST  {{baseUrl}}/post HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTIwODY3NzYsInN1YiI6MX0.EAPYKRLCgST04WMBB-ClLts1r_68oW6tacaO4FIky0Y
 
 {
-    "Title": "Treinar...", 
-    "Body": "Treinar seus p0rr4...", 
+    "Title": "Creontar", 
+    "Body": "Isso ai é um creonte", 
     "Belt": "Black", 
-    "Author": "Julio Pinheiro"
+    "Author": "Carson Gracie"
 }
 ###
 
 # @name updatePost
-PUT  {{baseUrl}}/post/2 HTTP/1.1
+PUT  {{baseUrl}}/post/11 HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTIwODY3NzYsInN1YiI6MX0.EAPYKRLCgST04WMBB-ClLts1r_68oW6tacaO4FIky0Y
 
 {
     "Title": "Cambalhotas e berimbolo!", 
@@ -35,6 +47,32 @@ Content-Type: application/json
 ###
 
 # @name deletePost
-DELETE   {{baseUrl}}/post/5 HTTP/1.1
+DELETE   {{baseUrl}}/post/13 HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTIwODY3NzYsInN1YiI6MX0.EAPYKRLCgST04WMBB-ClLts1r_68oW6tacaO4FIky0Y
 ###
+
+# @name createUser
+POST  {{baseUrl}}/singup HTTP/1.1
+Content-Type: application/json
+
+{
+    "Email": "igo@igordevopslabs.com", 
+    "Password": "MyB3stP4ss0rD"
+}
+###
+
+# @name Login
+POST  {{baseUrl}}/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "Email": "igo@igordevopslabs.com", 
+    "Password": "MyB3stP4ss0rD"
+}
+###
+
+# @name testAuth
+GET  {{baseUrl}}/test HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTIwODY3NzYsInN1YiI6MX0.EAPYKRLCgST04WMBB-ClLts1r_68oW6tacaO4FIky0Y

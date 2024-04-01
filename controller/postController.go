@@ -16,6 +16,8 @@ import (
 // @Accept      json
 // @Produce     json
 // @Param       post body models.Post true "Post create"
+// @Param       Authorization header string true "Authorization header"
+// @Security    BearerAuth
 // @Success     200 {object} models.Post
 // @Router      /post [post]
 func CreatePost(c *gin.Context) {
@@ -113,6 +115,8 @@ func GetPostByID(c *gin.Context) {
 // @Tags  	    posts
 // @Param       id path string true "Post ID"
 // @Param       post body models.Post true "Post to Update"
+// @Param       Authorization header string true "Authorization header"
+// @Security    BearerAuth
 // @Accept      json
 // @Produce     json
 // @Success     200 {object} models.Post
@@ -158,6 +162,8 @@ func UpdatePost(c *gin.Context) {
 // @ID          delete-post-id
 // @Tags  	    posts
 // @Param       id path string true "Post ID"
+// @Param       Authorization header string true "Authorization header"
+// @Security    BearerAuth
 // @Accept      json
 // @Produce     json
 // @Success     200 {object} models.Post
